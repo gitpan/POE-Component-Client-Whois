@@ -1,0 +1,7 @@
+MANIFEST
+Makefile.PL
+README
+lib/POE/Component/Client/Whois.pm
+t/00_use.t
+t/01_pod.t
+META.yml                                 Module meta-data (added by MakeMaker)
