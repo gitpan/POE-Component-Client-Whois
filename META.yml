@@ -1,11 +1,12 @@
 # http://module-build.sourceforge.net/META-spec.html
 #XXXXXXX This is a prototype!!!  It will change in the future!!! XXXXX#
 name:         POE-Component-Client-Whois
-version:      0.01
+version:      1.00
 version_from: lib/POE/Component/Client/Whois.pm
 installdirs:  site
 requires:
     Carp:                          0
+    Net::Netmask:                  1.9012
     POE:                           0.0607
     Socket:                        0
 

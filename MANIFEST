@@ -1,7 +1,12 @@
 MANIFEST
 Makefile.PL
 README
+examples/simple.pl
 lib/POE/Component/Client/Whois.pm
+lib/POE/Component/Client/Whois/TLDList.pm
+lib/POE/Component/Client/Whois/IPBlks.pm
 t/00_use.t
 t/01_pod.t
+t/02_tld.t
+t/03_ipblk.t
 META.yml                                 Module meta-data (added by MakeMaker)

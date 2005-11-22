@@ -10,6 +10,7 @@ WriteMakefile(
 							  'POE'    => 0.06_07,
 							  'Carp'   => 0,
 							  'Socket' => 0,
+							  'Net::Netmask' => 1.9012,
 							 },
 			  'VERSION_FROM' => 'lib/POE/Component/Client/Whois.pm', # finds $VERSION
 			  'dist' => { 'COMPRESS' => 'gzip --best' },

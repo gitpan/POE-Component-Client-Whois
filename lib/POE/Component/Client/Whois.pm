@@ -3,10 +3,13 @@ package POE::Component::Client::Whois;
 use strict;
 use warnings;
 use Socket;
+use Carp;
 use POE qw(Filter::Line Wheel::ReadWrite Wheel::SocketFactory);
+use POE::Component::Client::Whois::TLDList;
+use POE::Component::Client::Whois::IPBlks;
 use vars qw($VERSION);
 
-$VERSION = '0.01';
+$VERSION = '1.00';
 
 sub whois {
   my $package = shift;
@@ -16,7 +19,37 @@ sub whois {
 	$args{lc $key} = delete $args{$key};
   }
 
-  die "You must provide a whois host, a query string and a response event\n" unless ( $args{host} and $args{query} and $args{event} );
+  unless ( $args{query} and $args{event} ) {
+	warn "You must provide a query string and a response event\n";
+	return undef;
+  }
+
+  unless ( $args{host} ) {
+	my $whois_server;
+	my $tld = POE::Component::Client::Whois::TLDList->new();
+	my $blk = POE::Component::Client::Whois::IPBlks->new();
+	SWITCH: {
+	  if ( $args{query} =~ /^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$/ and scalar ( grep $_>=0&&$_<=255, split/\./, $args{query} ) == 4 ) {
+		$whois_server = ( $blk->get_server( $args{query} ) )[0];
+		unless ( $whois_server ) {
+			warn "Couldn\'t determine correct whois server, falling back on arin\n";
+			$whois_server = 'whois.arin.net';
+		}
+		last SWITCH;
+	  }
+	  if ( $args{query} =~ /:/ ) {
+		warn "IPv6 detected, defaulting to 6bone\n";
+		$whois_server = 'whois.6bone.net';
+		last SWITCH;
+	  }
+	  $whois_server = ( $tld->tld( $args{query} ) )[0];
+	  unless ( $whois_server ) {
+		warn "Could not automagically determine whois server from query string, defaulting to internic \n";
+		$whois_server = 'whois.internic.net';
+	  }
+	}
+	$args{host} = $whois_server;
+  }
 
   $args{session} = $poe_kernel->get_active_session() unless ( $args{session} );
 
@@ -119,7 +152,7 @@ __END__
 
 =head1 NAME
 
-POE::Component::Client::Whois - A one shot non-blocking WHOIS query.
+POE::Component::Client::Whois - A one shot non-blocking RFC 812 WHOIS query.
 
 =head1 SYNOPSIS
 
@@ -153,7 +186,10 @@ POE::Component::Client::Whois - A one shot non-blocking WHOIS query.
 
 =head1 DESCRIPTION
 
-POE::Component::Client::Whois provides a lightweight one shot non-blocking WHOIS query to other POE sessions and components.
+POE::Component::Client::Whois provides a lightweight one shot non-blocking RFC 812 WHOIS query to other POE sessions and components. The component will attempt to guess the appropriate whois server to connect to based on the query string passed.
+
+If no guess can be made it will connect to whois.internic.net for
+domains, whois.arin.net for IPv4 addresses and whois.6bone.net for IPv6  addresses.
 
 =head1 CONSTRUCTOR
 
@@ -161,13 +197,13 @@ POE::Component::Client::Whois provides a lightweight one shot non-blocking WHOIS
 
 =item whois
 
-Creates a POE::Component::Client::Whois session. Takes three mandatory arguments and two optional:
+Creates a POE::Component::Client::Whois session. Takes two mandatory arguments and a number of optional:
 
-  'host', the whois server to query; # Mandatory
   'query', the string query to send to the whois server; # Mandatory
   'event', the event name to emit on success/failure; # Mandatory
   'port', the port on the whois server to connect to, defaults to 43;
   'session', a session or alias to send the above 'event' to, defaults to calling session;
+  'host', the whois server to query; # Automagically determined by the component
 
 One can also pass arbitary data to whois() which will be passed back in the response event. It is advised that one uses
 an underscore prefix to avoid clashes with future versions.
@@ -181,8 +217,19 @@ ARG0 will be a hashref, which contains the original parameters passed to whois()
   'response', an arrayref of response lines from the whois server, assuming no error occurred;
   'error', in lieu of a valid response, this will be defined with a brief description of what went wrong;
 
+No parsing is undertaken on the returned data, this is an exercise left to the reader >;]
+
 =head1 AUTHOR
 
 Chris "BinGOs" Williams <chris@bingosnet.co.uk>
 
+This module is based on the linux whois client from L<http://www.linux.it/~md/software/>.
 
+=head1 KUDOS
+
+ketas, for first suggesting this module;
+buu, decay and hazard from #perl @ freenode, for helpful suggestions;
+
+=head1 SEE ALSO
+
+RFC 812 L<http://www.faqs.org/rfcs/rfc812.html>.
