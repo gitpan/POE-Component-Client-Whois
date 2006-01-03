@@ -1,0 +1,12 @@
+POE::Component::Client::Whois ChangeLOG
+=======================================
+
+1.02	Tue, 03 Jan 2006 14:00:05 GMT
+    - Fixed a serious bug in TLDList.pm. Thanks to integral for
+      putting me straight about <DATA> :)
+
+1.01	Tue, 03 Jan 2006 11:59:05 GMT
+    - Added whois server for .ee Thanks to ketas for that.
+
+1.00	Tue, 22 Nov 2005 15:43:48 GMT
+    - Initial Public release

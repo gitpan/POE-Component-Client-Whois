@@ -4,34 +4,37 @@ use strict;
 use warnings;
 use Data::Dumper;
 
-sub new {
-  my $self = bless { }, shift;
-  while (<DATA>) {
+our %data;
+
+while (<DATA>) {
 	chomp;
 	next if ( /^#/ );
 	my ($tld,@values) = split(/\s+/);
-	$self->{data}->{ $tld } = \@values;
-  }
+	$data{ $tld } = \@values;
+}
+
+
+sub new {
+  my $self = bless { data => \%data }, shift;
   return $self;
 }
 
 sub dump_tlds {
-  my ($self) = shift;
-
+  my $self = shift;
   print STDERR Dumper( $self->{data} );
   return 1;
 }
 
 sub tld {
-  my ($self) = shift;
-  my ($lookup) = shift || return undef;
+  my $self = shift;
+  my $lookup = shift || return;
 
   foreach my $tld ( keys %{ $self->{data} } ) {
 	if ( $lookup =~ /\Q$tld\E$/ ) {
 		return @{ $self->{data}->{ $tld } };
 	}
   }
-  return undef;
+  return;
 }
 
 1;
