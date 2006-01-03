@@ -7,7 +7,7 @@ use ExtUtils::MakeMaker;
 WriteMakefile(
 			  'NAME'	=> 'POE::Component::Client::Whois',
 			  'PREREQ_PM' => {
-							  'POE'    => 0.06_07,
+							  'POE'    => 0.3202,
 							  'Carp'   => 0,
 							  'Socket' => 0,
 							  'Net::Netmask' => 1.9012,

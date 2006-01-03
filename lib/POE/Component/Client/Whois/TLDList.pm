@@ -140,7 +140,8 @@ __DATA__
 .do	WEB http://www.nic.do
 .dz	NONE
 .ec	WEB http://www.nic.ec
-.ee	WEB http://www.eenet.ee/info/index.html
+#.ee	WEB http://www.eenet.ee/info/index.html
+.ee	whois.eenet.ee
 #.eg	NONE		# NIC? http://www.frcu.eun.eg
 #.eh
 #.er	NONE		# NIC? www.noc.net.er (recently connected!)
