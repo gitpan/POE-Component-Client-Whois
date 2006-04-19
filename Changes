@@ -1,6 +1,10 @@
 POE::Component::Client::Whois ChangeLOG
 =======================================
 
+1.03	Wed, 19 Apr 2006 21:00:45 BST
+    - Changed TLDList and IPBlks to using data structures 
+      instead of using <DATA>.
+
 1.02	Tue, 03 Jan 2006 14:00:05 GMT
     - Fixed a serious bug in TLDList.pm. Thanks to integral for
       putting me straight about <DATA> :)

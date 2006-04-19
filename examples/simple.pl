@@ -3,7 +3,7 @@
    use POE qw(Component::Client::Whois);
    use Data::Dumper;
 
-   die unless ( $ARGV[0] );
+   die unless $ARGV[0];
 
    POE::Session->create(
         package_states => [
