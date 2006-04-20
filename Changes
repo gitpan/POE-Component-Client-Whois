@@ -1,6 +1,11 @@
 POE::Component::Client::Whois ChangeLOG
 =======================================
 
+1.04	Thu, 20 Apr 2006 16:03:20 BST
+    - Added 58/8 range as APNIC to IPBlks.
+    - Enabled recursive lookups. PoCo should follow
+      ReferralServer by default. 
+
 1.03	Wed, 19 Apr 2006 21:00:45 BST
     - Changed TLDList and IPBlks to using data structures 
       instead of using <DATA>.

@@ -9,15 +9,15 @@ use POE::Component::Client::Whois::TLDList;
 use POE::Component::Client::Whois::IPBlks;
 use vars qw($VERSION);
 
-$VERSION = '1.03';
+$VERSION = '1.04';
 
 sub whois {
   my $package = shift;
   my %args = @_;
 
-  foreach my $key ( keys %args ) {
-	$args{lc $key} = delete $args{$key};
-  }
+  $args{lc $_} = delete $args{$_} for keys %args;
+
+  $args{referral} = 1 unless defined $args{referral} and !$args{referral};
 
   unless ( $args{query} and $args{event} ) {
 	warn "You must provide a query string and a response event\n";
@@ -57,7 +57,7 @@ sub whois {
 
   $self->{session_id} = POE::Session->create(
 	object_states => [ 
-		$self => [ qw(_start _sock_input _sock_down _sock_up _sock_failed _time_out) ],
+		$self => [ qw(_start _connect _sock_input _sock_down _sock_up _sock_failed _time_out) ],
 	],
 	options => { trace => 0 },
   )->ID();
@@ -68,7 +68,12 @@ sub whois {
 sub _start {
   my ($kernel,$self) = @_[KERNEL,OBJECT];
   $self->{session_id} = $_[SESSION]->ID();
+  $kernel->yield( '_connect' );
+  undef;
+}
 
+sub _connect {
+  my ($kernel,$self) = @_[KERNEL,OBJECT];
   $self->{factory} = POE::Wheel::SocketFactory->new(
 	SocketDomain   => AF_INET,
 	SocketType     => SOCK_STREAM,
@@ -122,6 +127,15 @@ sub _sock_up {
 sub _sock_down {
   my ($kernel,$self) = @_[KERNEL,OBJECT];
   delete $self->{socket};
+  $kernel->delay( '_time_out' => undef );
+
+  if ( $self->{request}->{referral} and $self->{_referral} ) {
+	delete $self->{request}->{reply};
+	$self->{request}->{host} = delete $self->{_referral};
+	$kernel->yield( '_connect' );
+	return;
+  }
+
   my $request = delete $self->{request};
   my $session = delete $request->{session};
 
@@ -131,13 +145,22 @@ sub _sock_down {
 	$request->{error} = "No information received from remote host";
   }
   $kernel->post( $session => $request->{event} => $request );
-  $kernel->delay( '_time_out' => undef );
   undef;
 }
 
 sub _sock_input {
   my ($kernel,$self,$line) = @_[KERNEL,OBJECT,ARG0];
-  push( @{ $self->{request}->{reply} }, $line );
+  push @{ $self->{request}->{reply} }, $line;
+  if ( my ($referral) = $line =~ /ReferralServer:\s+(.*)$/ ) {
+        my($scheme, $authority, $path, $query, $fragment) =
+  	  $referral =~ m|(?:([^:/?#]+):)?(?://([^/?#]*))?([^?#]*)(?:\?([^#]*))?(?:#(.*))?|;
+	return unless $scheme and $authority;
+	$scheme = lc $scheme;
+	return unless $scheme eq 'whois';
+	my ($host,$port) = split /:/, $authority;
+	return if $host eq $self->{request}->{host};
+	$self->{_referral} = $host;
+  }
   undef;
 }
 
@@ -204,6 +227,7 @@ Creates a POE::Component::Client::Whois session. Takes two mandatory arguments a
   'port', the port on the whois server to connect to, defaults to 43;
   'session', a session or alias to send the above 'event' to, defaults to calling session;
   'host', the whois server to query; # Automagically determined by the component
+  'referral', indicates to the poco whether to follow ReferralServer; # Default is 1
 
 One can also pass arbitary data to whois() which will be passed back in the response event. It is advised that one uses
 an underscore prefix to avoid clashes with future versions.

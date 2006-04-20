@@ -154,7 +154,8 @@ sub new {
                              '210.242.0.0/15' => 'whois.twnic.net',
                              '164.40.0.0/16' => 'whois.ripe.net',
                              '210.104.0.0/13' => 'whois.nic.or.kr',
-                             '160.216.0.0/14' => 'whois.ripe.net'
+                             '160.216.0.0/14' => 'whois.ripe.net',
+			     '58.0.0.0/8' => 'whois.apnic.net',
                            };
   return $self;
 }

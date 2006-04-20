@@ -1,5 +1,6 @@
    use strict;
    use warnings;
+   use lib '../blib/lib';
    use POE qw(Component::Client::Whois);
    use Data::Dumper;
 
