@@ -1,6 +1,9 @@
 POE::Component::Client::Whois ChangeLOG
 =======================================
 
+1.05	Wed, 12 Jul 2006 09:45:01 BST
+    - Documentation fix, reported by J. Cheetham.
+
 1.04	Thu, 20 Apr 2006 16:03:20 BST
     - Added 58/8 range as APNIC to IPBlks.
     - Enabled recursive lookups. PoCo should follow

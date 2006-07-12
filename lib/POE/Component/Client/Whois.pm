@@ -9,7 +9,7 @@ use POE::Component::Client::Whois::TLDList;
 use POE::Component::Client::Whois::IPBlks;
 use vars qw($VERSION);
 
-$VERSION = '1.04';
+$VERSION = '1.05';
 
 sub whois {
   my $package = shift;
@@ -238,8 +238,9 @@ an underscore prefix to avoid clashes with future versions.
 
 ARG0 will be a hashref, which contains the original parameters passed to whois() ( including any arbitary data ), plus either one of the following two keys:
 
-  'response', an arrayref of response lines from the whois server, assuming no error occurred;
-  'error', in lieu of a valid response, this will be defined with a brief description of what went wrong;
+  'reply', an arrayref of response lines from the whois server, assuming no error occurred;
+  'error', in lieu of a valid response, this will be defined with a brief description of 
+	   what went wrong;
 
 No parsing is undertaken on the returned data, this is an exercise left to the reader >;]
 
