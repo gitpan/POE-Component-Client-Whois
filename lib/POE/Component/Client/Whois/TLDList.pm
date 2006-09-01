@@ -1064,3 +1064,60 @@ sub tld {
 }
 
 1;
+
+__END__
+
+=head1 NAME
+
+POE::Component::Client::Whois::TLDList - determine the applicable Whois server for a given Top-level domain (TLD).
+
+=head1 SYNOPSIS
+
+  use strict;
+  use POE::Component::Client::Whois::TLDList;
+
+  my $tldlist = POE::Component::Client::Whois::TLDList->new();
+
+  my $whois_server = $tldlist->tld('foobar.com');
+
+  $tldlist->dumper_tlds();
+
+=head1 DESCRIPTION
+
+E::Component::Client::Whois::TLDList contains a list of top-level domains mapped to which Whois server has information for that domain.
+
+
+=head1 CONSTRUCTOR
+
+=over
+
+=item new
+
+Returns a POE::Component::Client::Whois::TLDList object.
+
+=back
+
+=head1 METHODS
+
+=over
+
+=item tld
+
+Takes a domain or hostname and returns a list or an undef on failure. The list returned usually has the
+reponsible Whois server as the first item in the list, but some TLDs do not have Whois servers.
+
+If the first item in the list is 'NONE' then that TLD doesn't have a Whois server or the Whois is unknown.
+
+If the first item in the list is 'WEB' then that TLD has a web interface only to query whois. The second item will usually be the web url to query.
+
+=item dump_tlds
+
+Uses Data::Dumper to dump TLD data to STDERR.
+
+=back
+
+=head1 AUTHOR
+
+Chris 'BinGOs' Williams
+
+

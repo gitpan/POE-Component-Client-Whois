@@ -182,3 +182,50 @@ sub get_server {
 }
 
 1;
+
+__END__
+
+=head1 NAME
+
+POE::Component::Client::Whois::IPBlks - determine which whois server is responsible for a network address.
+
+=head1 SYNOPSIS
+
+  use strict;
+  use POE::Component::Client::Whois::IPBlks;
+
+  my $ipblks = POE::Component::Client::Whois::IPBlks->new();
+
+  my $whois_server = $ipblks->get_server('192.168.1.12');
+
+=head1 DESCRIPTION
+
+POE::Component::Client::Whois::IPBlks provides the ability to determine which whois server is responsible for a network address. It has a list of network ranges mapped to whois servers and uses L<Net::Netmask> to determine the appropriate Whois server for the given address.
+
+=head1 CONSTRUCTOR
+
+=over
+
+=item new
+
+Returns a POE::Component::Client::Whois::IPBlks object.
+
+=back
+
+=head1 METHODS
+
+=over
+
+=item get_server
+
+Takes a single argument, an IP address to lookup the Whois for. Returns the applicable whois server or undef on failure.
+
+=back
+
+=head1 AUTHOR
+
+Chris 'BinGOs' Williams
+
+=head1 SEE ALSO 
+
+L<Net::Netmask>
