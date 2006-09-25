@@ -1,8 +1,8 @@
-# $Id: Makefile.PL,v 3.9 2005/04/14 19:23:16 chris Exp $
+#use ExtUtils::MakeMaker;
+use inc::Module::Install;
 
-use ExtUtils::MakeMaker;
-# See lib/ExtUtils/MakeMaker.pm for details of how to influence
-# the contents of the Makefile that is written.
+author 'Chris Williams <chris@bingosnet.co.uk>';
+license 'perl';
 
 WriteMakefile(
 			  'NAME'	=> 'POE::Component::Client::Whois',
@@ -13,7 +13,7 @@ WriteMakefile(
 							  'Socket' => 0,
 							  'Net::Netmask' => 1.9012,
 							 },
-			  'VERSION_FROM' => 'lib/POE/Component/Client/Whois.pm', # finds $VERSION
+			  'VERSION_FROM' => 'lib/POE/Component/Client/Whois.pm',
 			  'dist' => { 'COMPRESS' => 'gzip --best' },
 			 );
 

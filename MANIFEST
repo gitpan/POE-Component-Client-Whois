@@ -1,14 +1,19 @@
 Changes
-MANIFEST
-Makefile.PL
-README
 examples/simple.pl
+inc/Module/Install.pm
+inc/Module/Install/Base.pm
+inc/Module/Install/Makefile.pm
+inc/Module/Install/MakeMaker.pm
+inc/Module/Install/Metadata.pm
 lib/POE/Component/Client/Whois.pm
-lib/POE/Component/Client/Whois/TLDList.pm
 lib/POE/Component/Client/Whois/IPBlks.pm
+lib/POE/Component/Client/Whois/TLDList.pm
+Makefile.PL
+MANIFEST
+META.yml			Module meta-data (added by MakeMaker)
+README
 t/00_use.t
 t/01_pod.t
 t/01_pod_coverage.t
 t/02_tld.t
 t/03_ipblk.t
-META.yml                                 Module meta-data (added by MakeMaker)

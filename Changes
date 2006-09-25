@@ -1,6 +1,9 @@
 POE::Component::Client::Whois ChangeLOG
 =======================================
 
+1.07 	Mon Sep 25 16:03:56 BST 2006
+    - Switched to Module::Install
+
 1.06    Fri Sep 01 11:03:06 BST 2006
     - Added pod and pod coverage tests.
     - Fixed documentation and added docs to TLD and IPblks mods.
