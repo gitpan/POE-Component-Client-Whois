@@ -9,7 +9,7 @@ use POE::Component::Client::Whois::TLDList;
 use POE::Component::Client::Whois::IPBlks;
 use vars qw($VERSION);
 
-$VERSION = '1.07';
+$VERSION = '1.08';
 
 sub whois {
   my $package = shift;
@@ -130,7 +130,7 @@ sub _sock_down {
   $kernel->delay( '_time_out' => undef );
 
   if ( $self->{request}->{referral} and $self->{_referral} ) {
-	delete $self->{request}->{reply};
+	delete $self->{request}->{reply} if $self->{referral_only};
 	$self->{request}->{host} = delete $self->{_referral};
 	$kernel->yield( '_connect' );
 	return;
@@ -160,6 +160,10 @@ sub _sock_input {
 	my ($host,$port) = split /:/, $authority;
 	return if $host eq $self->{request}->{host};
 	$self->{_referral} = $host;
+  }
+  if ( $self->{request}->{host} eq 'whois.internic.net' 
+	and my ($other) = $line =~ /Whois Server:\s+(.*)\s*$/i ) {
+	$self->{_referral} = $other;
   }
   undef;
 }
@@ -228,6 +232,8 @@ Creates a POE::Component::Client::Whois session. Takes two mandatory arguments a
   'session', a session or alias to send the above 'event' to, defaults to calling session;
   'host', the whois server to query; # Automagically determined by the component
   'referral', indicates to the poco whether to follow ReferralServer; # Default is 1
+  'referral_only', indicates whether the poco should only return the results of querying
+		   the referral server; # default is 0
 
 One can also pass arbitary data to whois() which will be passed back in the response event. It is advised that one uses
 an underscore prefix to avoid clashes with future versions.

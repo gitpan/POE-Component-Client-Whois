@@ -1,6 +1,9 @@
 POE::Component::Client::Whois ChangeLOG
 =======================================
 
+1.08	Thu Nov 23 14:01:05 GMT 2006
+    - Added referral for whois.internic.net queries.
+
 1.07 	Mon Sep 25 16:03:56 BST 2006
     - Switched to Module::Install
 
