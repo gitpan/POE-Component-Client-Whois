@@ -3,6 +3,8 @@ name 'POE-Component-Client-Whois';
 author 'Chris Williams <chris@bingosnet.co.uk>';
 license 'perl';
 version_from 'lib/POE/Component/Client/Whois.pm';
+abstract_from 'lib/POE/Component/Client/Whois.pm';
+build_requires 'Test::More' => 0.47;
 requires 'warnings' => 0;
 requires 'Carp'   => 0;
 requires 'Socket' => 0;
