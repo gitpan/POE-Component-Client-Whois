@@ -1,6 +1,9 @@
 POE::Component::Client::Whois ChangeLOG
 =======================================
 
+1.14	Wed Apr  2 16:58:07 BST 2008
+    - Kwalitee fixes.
+
 1.12	Wed Jan 16 10:17:45 GMT 2008
     - Renamed test scripts and added query test
 

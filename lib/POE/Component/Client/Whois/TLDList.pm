@@ -3,8 +3,11 @@ package POE::Component::Client::Whois::TLDList;
 use strict;
 use warnings;
 use Data::Dumper;
+use vars qw($VERSION);
 
-our %data = (
+$VERSION = '1.14';
+
+my %data = (
                              '.cy' => [
                                         'NONE',
                                         '#',

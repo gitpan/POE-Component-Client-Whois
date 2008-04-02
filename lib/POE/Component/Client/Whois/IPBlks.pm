@@ -3,6 +3,9 @@ package POE::Component::Client::Whois::IPBlks;
 use strict;
 use warnings;
 use Net::Netmask;
+use vars qw($VERSION);
+
+$VERSION = '1.14';
 
 sub new {
   my $self = bless { }, shift;
