@@ -5,7 +5,7 @@ use warnings;
 use Data::Dumper;
 use vars qw($VERSION);
 
-$VERSION = '1.14';
+$VERSION = '1.16';
 
 my %data = (
                              '.cy' => [
@@ -1083,7 +1083,7 @@ POE::Component::Client::Whois::TLDList - determine the applicable Whois server f
 
   my $whois_server = $tldlist->tld('foobar.com');
 
-  $tldlist->dumper_tlds();
+  $tldlist->dump_tlds();
 
 =head1 DESCRIPTION
 
@@ -1123,4 +1123,8 @@ Uses Data::Dumper to dump TLD data to STDERR.
 
 Chris 'BinGOs' Williams
 
+=head1 LICENSE
 
+Copyright C<(c)> Chris Williams
+
+This module may be used, modified, and distributed under the same terms as Perl itself. Please see the license that came with your Perl distribution for details.

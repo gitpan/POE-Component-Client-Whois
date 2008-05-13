@@ -9,7 +9,7 @@ use POE::Component::Client::Whois::TLDList;
 use POE::Component::Client::Whois::IPBlks;
 use vars qw($VERSION);
 
-$VERSION = '1.14';
+$VERSION = '1.16';
 
 sub whois {
   my $package = shift;
@@ -255,6 +255,12 @@ No parsing is undertaken on the returned data, this is an exercise left to the r
 Chris "BinGOs" Williams <chris@bingosnet.co.uk>
 
 This module is based on the linux whois client from L<http://www.linux.it/~md/software/>.
+
+=head1 LICENSE
+
+Copyright L<(c)> Chris Williams
+
+This module may be used, modified, and distributed under the same terms as Perl itself. Please see the license that came with your Perl distribution for details.
 
 =head1 KUDOS
 

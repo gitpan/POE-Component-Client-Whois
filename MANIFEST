@@ -11,6 +11,7 @@ inc/Module/Install/WriteAll.pm
 lib/POE/Component/Client/Whois.pm
 lib/POE/Component/Client/Whois/IPBlks.pm
 lib/POE/Component/Client/Whois/TLDList.pm
+LICENSE
 Makefile.PL
 MANIFEST			This list of files
 META.yml
@@ -21,4 +22,3 @@ t/02_ipblk.t
 t/03_whois.t
 t/99_pod.t
 t/99_pod_coverage.t
-t/99_test_kwalitee.t

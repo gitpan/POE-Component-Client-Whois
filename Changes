@@ -1,6 +1,10 @@
 POE::Component::Client::Whois ChangeLOG
 =======================================
 
+1.16	Tue May 13 16:05:04 BST 2008
+	- Added license information and removed kwalitee test.
+	- Fixed doc error reported by Lihong Wei [rt.cpan.org #35841]
+
 1.14	Wed Apr  2 16:58:07 BST 2008
     - Kwalitee fixes.
 

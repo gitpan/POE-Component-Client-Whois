@@ -5,7 +5,7 @@ use warnings;
 use Net::Netmask;
 use vars qw($VERSION);
 
-$VERSION = '1.14';
+$VERSION = '1.16';
 
 sub new {
   my $self = bless { }, shift;
@@ -228,6 +228,12 @@ Takes a single argument, an IP address to lookup the Whois for. Returns the appl
 =head1 AUTHOR
 
 Chris 'BinGOs' Williams
+
+=head1 LICENSE
+
+Copyright C<(c)> Chris Williams
+
+This module may be used, modified, and distributed under the same terms as Perl itself. Please see the license that came with your Perl distribution for details.
 
 =head1 SEE ALSO 
 
