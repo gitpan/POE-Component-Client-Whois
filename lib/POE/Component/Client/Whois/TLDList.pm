@@ -5,7 +5,7 @@ use warnings;
 use Data::Dumper;
 use vars qw($VERSION);
 
-$VERSION = '1.16';
+$VERSION = '1.17';
 
 my %data = (
                              '.cy' => [
@@ -248,6 +248,9 @@ my %data = (
                                         '#',
                                         'http://www.zamnet.zm/domain.shtml'
                                       ],
+			     '.eu' => [
+					'whois.eu'
+				      ],
                              '.br.com' => [
                                             'whois.centralnic.net'
                                           ],

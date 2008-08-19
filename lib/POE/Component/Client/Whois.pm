@@ -9,7 +9,7 @@ use POE::Component::Client::Whois::TLDList;
 use POE::Component::Client::Whois::IPBlks;
 use vars qw($VERSION);
 
-$VERSION = '1.16';
+$VERSION = '1.18';
 
 sub whois {
   my $package = shift;
