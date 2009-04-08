@@ -4,8 +4,10 @@ author:
   - 'Chris Williams <chris@bingosnet.co.uk>'
 build_requires:
   Test::More: 0.47
+configure_requires:
+  ExtUtils::MakeMaker: 6.50
 distribution_type: module
-generated_by: 'Module::Install version 0.76'
+generated_by: 'Module::Install version 0.81'
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
@@ -13,17 +15,19 @@ meta-spec:
 name: POE-Component-Client-Whois
 no_index:
   directory:
+    - examples
     - inc
     - t
-    - examples
 requires:
   Carp: 0
   Net::Netmask: 1.9012
-  POE: 0.38
+  POE: 1.004
   POE::Filter::Line: 0
   POE::Wheel::ReadWrite: 0
   POE::Wheel::SocketFactory: 0
   Socket: 0
+  perl: 5.6.0
 resources:
   license: http://dev.perl.org/licenses/
-version: 1.18
+  repository: git://github.com/bingos/poe-component-client-whois.git
+version: 1.20
