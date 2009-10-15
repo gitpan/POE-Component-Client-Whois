@@ -3,11 +3,12 @@ abstract: 'A one shot non-blocking RFC 812 WHOIS query.'
 author:
   - 'Chris Williams <chris@bingosnet.co.uk>'
 build_requires:
+  ExtUtils::MakeMaker: 6.42
   Test::More: 0.47
 configure_requires:
-  ExtUtils::MakeMaker: 6.50
+  ExtUtils::MakeMaker: 6.42
 distribution_type: module
-generated_by: 'Module::Install version 0.81'
+generated_by: 'Module::Install version 0.91'
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
@@ -18,6 +19,16 @@ no_index:
     - examples
     - inc
     - t
+provides:
+  POE::Component::Client::Whois:
+    file: lib/POE/Component/Client/Whois.pm
+    version: 1.22
+  POE::Component::Client::Whois::IPBlks:
+    file: lib/POE/Component/Client/Whois/IPBlks.pm
+    version: 1.22
+  POE::Component::Client::Whois::TLDList:
+    file: lib/POE/Component/Client/Whois/TLDList.pm
+    version: 1.22
 requires:
   Carp: 0
   Net::Netmask: 1.9012
@@ -28,6 +39,7 @@ requires:
   Socket: 0
   perl: 5.6.0
 resources:
+  homepage: http://github.com/bingos/poe-component-client-whois/tree
   license: http://dev.perl.org/licenses/
   repository: git://github.com/bingos/poe-component-client-whois.git
-version: 1.20
+version: 1.22
