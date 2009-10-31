@@ -22,13 +22,13 @@ no_index:
 provides:
   POE::Component::Client::Whois:
     file: lib/POE/Component/Client/Whois.pm
-    version: 1.26
+    version: 1.28
   POE::Component::Client::Whois::IPBlks:
     file: lib/POE/Component/Client/Whois/IPBlks.pm
-    version: 1.26
+    version: 1.28
   POE::Component::Client::Whois::TLDList:
     file: lib/POE/Component/Client/Whois/TLDList.pm
-    version: 1.26
+    version: 1.28
 requires:
   Carp: 0
   Net::Netmask: 1.9012
@@ -42,4 +42,4 @@ resources:
   homepage: http://github.com/bingos/poe-component-client-whois/tree
   license: http://dev.perl.org/licenses/
   repository: git://github.com/bingos/poe-component-client-whois.git
-version: 1.26
+version: 1.28
