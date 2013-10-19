@@ -1,11 +1,13 @@
 package POE::Component::Client::Whois::TLDList;
+{
+  $POE::Component::Client::Whois::TLDList::VERSION = '1.30';
+}
+
+#ABSTRACT: Determine the applicable Whois server for a given Top-level domain (TLD).
 
 use strict;
 use warnings;
 use Data::Dumper;
-use vars qw($VERSION);
-
-$VERSION = '1.28';
 
 my %data = (
           '.cy' => [
@@ -1171,9 +1173,15 @@ sub tld {
 
 __END__
 
+=pod
+
 =head1 NAME
 
-POE::Component::Client::Whois::TLDList - determine the applicable Whois server for a given Top-level domain (TLD).
+POE::Component::Client::Whois::TLDList - Determine the applicable Whois server for a given Top-level domain (TLD).
+
+=head1 VERSION
+
+version 1.30
 
 =head1 SYNOPSIS
 
@@ -1189,7 +1197,6 @@ POE::Component::Client::Whois::TLDList - determine the applicable Whois server f
 =head1 DESCRIPTION
 
 E::Component::Client::Whois::TLDList contains a list of top-level domains mapped to which Whois server has information for that domain.
-
 
 =head1 CONSTRUCTOR
 
@@ -1224,10 +1231,13 @@ Uses Data::Dumper to dump TLD data to STDERR.
 
 =head1 AUTHOR
 
-Chris C<BinGOs> Williams
+Chris Williams <chris@bingosnet.co.uk>
 
-=head1 LICENSE
+=head1 COPYRIGHT AND LICENSE
 
-Copyright E<copy> Chris Williams
+This software is copyright (c) 2013 by Chris Williams.
 
-This module may be used, modified, and distributed under the same terms as Perl itself. Please see the license that came with your Perl distribution for details.
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
+
+=cut

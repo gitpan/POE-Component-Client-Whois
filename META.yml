@@ -3,43 +3,30 @@ abstract: 'A one shot non-blocking RFC 812 WHOIS query.'
 author:
   - 'Chris Williams <chris@bingosnet.co.uk>'
 build_requires:
-  ExtUtils::MakeMaker: 6.42
-  Test::More: 0.47
+  File::Spec: 0
+  IO::Handle: 0
+  IPC::Open3: 0
+  Test::More: 0
 configure_requires:
-  ExtUtils::MakeMaker: 6.42
-distribution_type: module
-generated_by: 'Module::Install version 0.91'
+  ExtUtils::MakeMaker: 6.30
+dynamic_config: 0
+generated_by: 'Dist::Zilla version 4.300039, CPAN::Meta::Converter version 2.132830'
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
   version: 1.4
 name: POE-Component-Client-Whois
-no_index:
-  directory:
-    - examples
-    - inc
-    - t
-provides:
-  POE::Component::Client::Whois:
-    file: lib/POE/Component/Client/Whois.pm
-    version: 1.28
-  POE::Component::Client::Whois::IPBlks:
-    file: lib/POE/Component/Client/Whois/IPBlks.pm
-    version: 1.28
-  POE::Component::Client::Whois::TLDList:
-    file: lib/POE/Component/Client/Whois/TLDList.pm
-    version: 1.28
 requires:
   Carp: 0
+  Net::IP::Minimal: 0
   Net::Netmask: 1.9012
   POE: 1.004
   POE::Filter::Line: 0
   POE::Wheel::ReadWrite: 0
   POE::Wheel::SocketFactory: 0
   Socket: 0
-  perl: 5.6.0
+  perl: 5.006
 resources:
-  homepage: http://github.com/bingos/poe-component-client-whois/tree
-  license: http://dev.perl.org/licenses/
-  repository: git://github.com/bingos/poe-component-client-whois.git
-version: 1.28
+  homepage: https://github.com/bingos/poe-component-client-whois
+  repository: https://github.com/bingos/poe-component-client-whois.git
+version: 1.30

@@ -1,72 +1,92 @@
-POE::Component::Client::Whois ChangeLOG
-=======================================
+==================================================
+Changes from 2008-10-20 00:00:00 +0000 to present.
+==================================================
 
-1.28  Sat Oct 31 12:26:21 GMT 2009
-  - Actually fixed referral following
+-----------------------------------------
+version 1.30 at 2013-10-19 18:28:10 +0000
+-----------------------------------------
 
-1.26  Sat Oct 31 11:23:40 GMT 2009
-  - Fixed referral following
+  Change: 74c6fb8c2402d3f08a65630245450542f5973853
+  Author: Chris 'BinGOs' Williams <chris@bingosnet.co.uk>
+  Date : 2013-10-19 19:28:10 +0000
 
-1.24  Thu Oct 15 20:47:12 BST 2009
-  - Implemented NONE and WEB handling behaviour
+    Change distribution to Dist::Zilla 
 
-1.22  Thu Oct 15 11:28:17 BST 2009
-  - Refactoring of the TLD lookups
-  - Updated TLD lists
+  Change: 2cd6ae2971a0d6722d97b5c438aba9d0bb6ecbc5
+  Author: Chris 'BinGOs' Williams <chris@bingosnet.co.uk>
+  Date : 2013-10-19 19:17:30 +0000
 
-1.20	Wed Apr  8 21:21:41 BST 2009
-	- Auto set repository in META.yml
-	- Adjust some of the tests to try and track down the fails
-1.18	Tue Aug 19 14:17:21 BST 2008
-	- Added .eu whois server to TLDList.pm
+    Updated ipblks 
 
-1.16	Tue May 13 16:05:04 BST 2008
-	- Added license information and removed kwalitee test.
-	- Fixed doc error reported by Lihong Wei [rt.cpan.org #35841]
+  Change: 2812b9185f25691cf7f20af51c5ca5cc4480e914
+  Author: Chris 'BinGOs' Williams <chris@bingosnet.co.uk>
+  Date : 2013-08-28 10:31:42 +0000
 
-1.14	Wed Apr  2 16:58:07 BST 2008
-    - Kwalitee fixes.
+    Update IPBlks data 
 
-1.12	Wed Jan 16 10:17:45 GMT 2008
-    - Renamed test scripts and added query test
+-----------------------------------------
+version 1.28 at 2009-10-31 12:26:57 +0000
+-----------------------------------------
 
-1.11	Wed Oct 31 17:40:33 GMT 2007
-    - Updated Module::Install to 0.68
+  Change: dc5267887b9ef9a69eaa92176656f7665241787f
+  Author: Chris Williams <chris@bingosnet.co.uk>
+  Date : 2009-10-31 12:26:57 +0000
 
-1.10 	Fri Jul 27 20:39:01 BST 2007
-    - Fixed abstract_from and build_requires in Makefile.PL
+    Actually fixed referral following 
 
-1.09	Mon Feb 19 11:14:06 GMT 2007
-    - Added kwalitee test.
+-----------------------------------------
+version 1.26 at 2009-10-31 11:24:08 +0000
+-----------------------------------------
 
-1.08	Thu Nov 23 14:01:05 GMT 2006
-    - Added referral for whois.internic.net queries.
+  Change: 1155905bd3061444c4944702b4bc55a11daa8a58
+  Author: Chris Williams <chris@bingosnet.co.uk>
+  Date : 2009-10-31 11:24:08 +0000
 
-1.07 	Mon Sep 25 16:03:56 BST 2006
-    - Switched to Module::Install
+    Fixed referral following 
 
-1.06    Fri Sep 01 11:03:06 BST 2006
-    - Added pod and pod coverage tests.
-    - Fixed documentation and added docs to TLD and IPblks mods.
+-----------------------------------------
+version 1.24 at 2009-10-15 19:47:52 +0000
+-----------------------------------------
 
-1.05	Wed, 12 Jul 2006 09:45:01 BST
-    - Documentation fix, reported by J. Cheetham.
+  Change: 04ff7c738271c94161ce2e83bfe37b9f31bdbfcf
+  Author: Chris Williams <chris@bingosnet.co.uk>
+  Date : 2009-10-15 20:47:52 +0000
 
-1.04	Thu, 20 Apr 2006 16:03:20 BST
-    - Added 58/8 range as APNIC to IPBlks.
-    - Enabled recursive lookups. PoCo should follow
-      ReferralServer by default. 
+    Implemented NONE and WEB handling behaviour 
 
-1.03	Wed, 19 Apr 2006 21:00:45 BST
-    - Changed TLDList and IPBlks to using data structures 
-      instead of using <DATA>.
+-----------------------------------------
+version 1.22 at 2009-10-15 13:21:26 +0000
+-----------------------------------------
 
-1.02	Tue, 03 Jan 2006 14:00:05 GMT
-    - Fixed a serious bug in TLDList.pm. Thanks to integral for
-      putting me straight about <DATA> :)
+  Change: f7d906ce59eba9dd134a9bd5f9e7c9993aebe093
+  Author: Chris Williams <chris@bingosnet.co.uk>
+  Date : 2009-10-15 14:21:26 +0000
 
-1.01	Tue, 03 Jan 2006 11:59:05 GMT
-    - Added whois server for .ee Thanks to ketas for that.
+    Added another test to TLD for WEB 
 
-1.00	Tue, 22 Nov 2005 15:43:48 GMT
-    - Initial Public release
+  Change: 4d7e84c93420f0aa72fdf257e4607d3564fcd997
+  Author: Chris Williams <chris@bingosnet.co.uk>
+  Date : 2009-10-15 14:18:28 +0000
+
+    Refactoring of the TLD lookups. Updated TLD lists 
+
+-----------------------------------------
+version 1.20 at 2009-04-08 20:26:28 +0000
+-----------------------------------------
+
+  Change: 075840bcaa72139e06c008c28a047256adb4977a
+  Author: Chris Williams <chris@bingosnet.co.uk>
+  Date : 2009-04-08 21:26:28 +0000
+
+    Auto set repository in META.yml. Adjust some tests to try and track
+    down fails 
+
+  Change: 66cd34e0eabd834a7f94dd66c05e2ce3a86c3c04
+  Author: Chris Williams <chris@bingosnet.co.uk>
+  Date : 2009-04-01 13:17:07 +0000
+
+    Initial git import 
+
+================
+End of releases.
+================
